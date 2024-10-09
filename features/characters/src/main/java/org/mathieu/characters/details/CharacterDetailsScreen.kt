@@ -1,5 +1,6 @@
 package org.mathieu.characters.details
 
+import android.media.midi.MidiDevice
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.Image
@@ -155,6 +156,17 @@ private fun CharacterDetailsContent(
                     Spacer(modifier = Modifier.height(12.dp))
 
                     Text(text = state.name)
+
+                    Text(text = "Comes from ${state.homeLocationImageUrl}")
+
+                    SubcomposeAsyncImage(
+                        modifier = Modifier
+                            .size(325.dp)
+                            .fillMaxWidth()
+                            .shadow(3.dp),
+                        model = state.homeLocationImageUrl,
+                        contentDescription = null
+                    )
                 }
 
 

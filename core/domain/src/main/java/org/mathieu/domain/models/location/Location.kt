@@ -18,3 +18,10 @@ data class Location(
     val dimension: String,
     val residents: List<Character>
 )
+
+data class LocationPreview(
+    val id: Int,
+    val name: String,
+    val type: String,
+    val dimension: String
+)

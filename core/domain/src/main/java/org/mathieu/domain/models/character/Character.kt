@@ -1,5 +1,7 @@
 package org.mathieu.domain.models.character
 
+import org.mathieu.domain.models.location.LocationPreview
+
 /**
  * Represents a detailed characterization, typically derived from a data source or API.
  *
@@ -22,7 +24,8 @@ data class Character(
     val gender: CharacterGender,
     val origin: Pair<String, Int>,
     val location: Pair<String, Int>,
-    val avatarUrl: String
+    val avatarUrl: String,
+    val locationPreview: LocationPreview
 )
 
 /**

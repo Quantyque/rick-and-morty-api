@@ -38,18 +38,3 @@ L'application est structuré en MVI, de la manière suivante :
     Cette couche permet de créer les interfaces graphiques pour l'utilisateur
       - details : Écran et vue-modèle lié aux détails d'information
       - list : Représente la vue et la vue-modèle de la liste de tous les personnages
-        
-
-## Installation
-
-Clonez ce dépôt sur votre machine locale et installez les dépendances.
-
-```bash
-# Cloner le dépôt
-git clone https://github.com/utilisateur/nom-du-projet.git
-
-# Se déplacer dans le répertoire du projet
-cd nom-du-projet
-
-# Installer les dépendances
-npm install

@@ -1,4 +1,4 @@
-package org.mathieu.characters.details
+package org.mathieu.Locations.details
 
 import android.media.midi.MidiDevice
 import androidx.compose.animation.AnimatedContent
@@ -45,21 +45,23 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
+import org.mathieu.characters.details.LocationDetailState
+import org.mathieu.characters.details.LocationDetailsViewModel
 import org.mathieu.ui.composables.PreviewContent
 
-private typealias UIState = CharacterDetailsState
+private typealias UILocationState = LocationDetailState
 
 @Composable
-fun CharacterDetailsScreen(
+fun LocationDetailsScreen(
     navController: NavController,
     id: Int
 ) {
-    val viewModel: CharacterDetailsViewModel = viewModel()
+    val viewModel: LocationDetailsViewModel = viewModel()
     val state by viewModel.state.collectAsState()
 
     viewModel.init(characterId = id)
 
-    CharacterDetailsContent(
+    LocationDetailsContent(
         state = state,
         onClickBack = navController::popBackStack
     )
@@ -69,8 +71,8 @@ fun CharacterDetailsScreen(
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
 @Composable
-private fun CharacterDetailsContent(
-    state: UIState = UIState(),
+private fun LocationDetailsContent(
+    state: UILocationState = UILocationState(),
     onClickBack: () -> Unit = { }
 ) = Scaffold(topBar = {
 
@@ -147,43 +149,6 @@ private fun CharacterDetailsContent(
                     modifier = Modifier.fillMaxWidth().padding(top = 24.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    SubcomposeAsyncImage(
-                        modifier = Modifier
-                            .size(120.dp)
-                            .clip(CircleShape)
-                            .shadow(3.dp),
-                        model = state.avatarUrl,
-                        contentDescription = null
-                    )
-
-                    Spacer(modifier = Modifier.height(12.dp))
-
-                    Text(text = state.name)
-
-                    Text(text = "Comes from ${state.homeLocation}")
-
-                    ElevatedCard(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        shape = RoundedCornerShape(16.dp),
-                        colors = CardDefaults.elevatedCardColors(containerColor = Color.White),
-                        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 8.dp)
-                    ) {
-                        Column(
-                            modifier = Modifier.padding(16.dp) // Padding inside the card for spacing
-                        ) {
-                            Text(
-                                text = "Name of the Location: ${state.homeLocation}",
-                                style = MaterialTheme.typography.bodyLarge // Optional: Style customization
-                            )
-                            Spacer(modifier = Modifier.height(8.dp)) // Add space between texts
-                            Text(
-                                text = "Type of the Location: ${state.homeTypeLocation}",
-                                style = MaterialTheme.typography.bodyMedium // Optional: Style customization
-                            )
-                        }
-                    }
 
                 }
             }
@@ -194,7 +159,7 @@ private fun CharacterDetailsContent(
 
 @Preview
 @Composable
-private fun CharacterDetailsPreview() = PreviewContent {
-    CharacterDetailsContent()
+private fun LocationDetailsPreview() = PreviewContent {
+    LocationDetailsContent()
 }
 
